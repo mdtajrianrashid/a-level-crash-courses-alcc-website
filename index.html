@@ -155,6 +155,18 @@ strong, b {
       opacity: 1;
     }
 
+    /* Animate Gradient Slowly */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient-slow {
+  background-size: 300% 300%;
+  animation: gradientShift 15s ease infinite;
+}
+
     /* Pulse Animation */
     @keyframes pulse {
       0%   { transform: scale(1);   box-shadow: 0 0 0 0 rgba(37,211,102,0.6); }
@@ -166,20 +178,30 @@ strong, b {
 <body class="bg-white text-gray-800">
 
   <!-- Navbar -->
-  <header class="shadow-md fixed w-full bg-white z-50">
-    <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
+  <header class="fixed w-full z-50 shadow-md overflow-hidden">
+  <div class="relative">
+    <!-- Gradient Background with Animation -->
+    <div class="absolute inset-0 bg-gradient-to-r from-[#0f1f3d] via-[#1e40af] to-[#facc15] animate-gradient-slow"></div>
+
+    <!-- Navbar Content -->
+    <div class="relative max-w-7xl mx-auto flex justify-between items-center p-4">
+      <!-- Logo Left -->
       <div class="flex items-center space-x-2">
-        <img src="./images/No Background ALCC Logo.png" alt="ALCC Logo" class="h-10" />
-        <span class="font-bold text-xl text-blue-800">ALCC</span>
+        <img src="./images/White Background ALCC Logo.png" alt="ALCC Logo" class="h-10" />
+        <span class="font-bold text-xl text-white">ALCC</span>
       </div>
-      <nav class="hidden md:flex space-x-6 font-medium text-gray-700">
-        <a href="#about" class="hover:text-yellow-500 transition">About</a>
-        <a href="#subjects" class="hover:text-yellow-500 transition">Subjects</a>
-        <a href="#why" class="hover:text-yellow-500 transition">Why ALCC</a>
-        <a href="#team" class="hover:text-yellow-500 transition">Team</a>
-        <a href="#contact" class="hover:text-yellow-500 transition">Contact</a>
+
+      <!-- Nav Right -->
+      <nav class="hidden md:flex space-x-6 font-medium text-white relative z-10">
+        <a href="#about" class="hover:text-yellow-300 transition">About</a>
+        <a href="#subjects" class="hover:text-yellow-300 transition">Subjects</a>
+        <a href="#why" class="hover:text-yellow-300 transition">Why ALCC</a>
+        <a href="#team" class="hover:text-yellow-300 transition">Team</a>
+        <a href="#contact" class="hover:text-yellow-300 transition">Contact</a>
       </nav>
-      <button id="menu-btn" class="md:hidden text-blue-800 focus:outline-none" aria-label="Open menu">
+
+      <!-- Mobile Menu Button -->
+      <button id="menu-btn" class="md:hidden text-white focus:outline-none relative z-10" aria-label="Open menu">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none"
              viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round"
@@ -187,16 +209,21 @@ strong, b {
         </svg>
       </button>
     </div>
-    <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
-      <nav class="flex flex-col space-y-4 py-4 px-6 text-gray-700 font-medium">
-        <a href="#about" class="hover:text-yellow-500 transition">About</a>
-        <a href="#subjects" class="hover:text-yellow-500 transition">Subjects</a>
-        <a href="#why" class="hover:text-yellow-500 transition">Why ALCC</a>
-        <a href="#team" class="hover:text-yellow-500 transition">Team</a>
-        <a href="#contact" class="hover:text-yellow-500 transition">Contact</a>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden shadow-lg relative z-10">
+      <nav class="flex flex-col space-y-4 py-4 px-6 text-white font-medium">
+        <a href="#about" class="hover:text-yellow-300 transition">About</a>
+        <a href="#subjects" class="hover:text-yellow-300 transition">Subjects</a>
+        <a href="#why" class="hover:text-yellow-300 transition">Why ALCC</a>
+        <a href="#team" class="hover:text-yellow-300 transition">Team</a>
+        <a href="#contact" class="hover:text-yellow-300 transition">Contact</a>
       </nav>
     </div>
-  </header>
+  </div>
+</header>
+
+
 
   <!-- Hero  -->
   <section class="pt-24 hero-bg text-white text-center flex items-center justify-center min-h-screen">
