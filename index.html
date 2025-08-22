@@ -30,16 +30,17 @@
 
     /* Floating WhatsApp Button */
     #whatsapp-btn {
-      position: fixed;                      /* stays fixed in the corner */
+      position: fixed;
       bottom: 20px; right: 20px;
       background: #25D366; color: #fff;
       padding: 14px 16px; border-radius: 9999px;
       font-size: 16px; font-weight: 700;
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       display: flex; align-items: center; gap: 8px;
-      z-index: 60; cursor: pointer;
+      z-index: 999; cursor: pointer;
       transition: transform 0.3s ease, background 0.3s ease;
       animation: pulse 1.8s infinite;
+      text-decoration: none;
     }
     #whatsapp-btn:hover { background: #1ebe5b; transform: scale(1.08); }
 
@@ -49,7 +50,7 @@
       right: 110%;
       top: 50%;
       transform: translateY(-50%);
-      background: #1e293b;  /* dark slate */
+      background: #1e293b;
       color: #fff;
       padding: 6px 10px;
       border-radius: 6px;
@@ -58,8 +59,8 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.25);
       visibility: hidden;
       opacity: 0;
-      transition: opacity 0.25s ease;
-      pointer-events: none; /* ignore mouse so hover stays on the button */
+      transition: opacity 0.25s ease-in-out;
+      pointer-events: none;
     }
     #whatsapp-btn .tooltip::after {
       content: "";
@@ -289,12 +290,11 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // Optional: brief tooltip on touch (since hover doesn't exist on mobile)
+    // Tooltip auto-show on mobile (touch)
     const waBtn = document.getElementById('whatsapp-btn');
     const tooltip = waBtn.querySelector('.tooltip');
     let tooltipTimer;
     waBtn.addEventListener('touchstart', () => {
-      if (!tooltip) return;
       tooltip.style.visibility = 'visible';
       tooltip.style.opacity = '1';
       clearTimeout(tooltipTimer);
