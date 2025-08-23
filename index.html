@@ -49,6 +49,12 @@
     z-index: 2;
 }
 
+/* Section: Navbar Adjusting */
+section {
+  scroll-margin-top: 100px; /* adjust to match your navbar height */
+}
+
+
 /* Keyframes for animated background */
 @keyframes slideBackground {
     0% {
@@ -225,7 +231,7 @@ strong, b {
 </header>
 
   <!-- Hero -->
-  <section class="pt-12 md:pt-24 hero-bg text-white text-center flex items-center justify-center min-h-screen">
+  <section class="pt-6 md:pt-24 hero-bg text-white text-center flex items-center justify-center min-h-screen">
   <div class="max-w-4xl mx-auto py-20 px-4 fade-in">
     <h1 class="text-4xl md:text-6xl font-extrabold">
       A-Level Crash Courses <br class="md:hidden">(ALCC)
@@ -300,7 +306,7 @@ strong, b {
   <!-- Team -->
   <section id="team" class="bg-gray-100 py-16 fade-in">
     <div class="max-w-6xl mx-auto px-6 text-center">
-      <h2 class="text-3xl font-bold text-blue-800">Meet Our Experts</h2>
+      <h2 class="text-3xl font-bold text-blue-800">Meet Our Team</h2>
       <div class="grid md:grid-cols-4 gap-8 mt-10">
         <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transform hover:-translate-y-2 transition">
           <h3 class="font-semibold text-lg">Tajrian Rashid</h3>
@@ -369,50 +375,66 @@ strong, b {
 
   <!-- JS -->
   <script>
-    // Activate Lucide icons
-    lucide.createIcons();
+  // Activate Lucide icons
+  lucide.createIcons();
 
-    // Fade in on scroll
-    const faders = document.querySelectorAll('.fade-in');
-    const appearOnScroll = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.2 });
-    faders.forEach(fade => appearOnScroll.observe(fade));
-
-    // Mobile menu
-    const menuBtn = document.getElementById('menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    menuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
+  // Fade in on scroll
+  const faders = document.querySelectorAll('.fade-in');
+  const appearOnScroll = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
     });
+  }, { threshold: 0.2 });
+  faders.forEach(fade => appearOnScroll.observe(fade));
 
-    // Back to Top visibility
-    const backToTop = document.getElementById('back-to-top');
-    window.addEventListener('scroll', () => {
-      backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
-    });
-    backToTop.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+  // Mobile menu
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
 
-    // Tooltip auto-show on mobile (touch)
-    const waBtn = document.getElementById('whatsapp-btn');
-    const tooltip = waBtn.querySelector('.tooltip');
-    let tooltipTimer;
-    waBtn.addEventListener('touchstart', () => {
-      tooltip.style.visibility = 'visible';
-      tooltip.style.opacity = '1';
-      clearTimeout(tooltipTimer);
-      tooltipTimer = setTimeout(() => {
-        tooltip.style.opacity = '0';
-        tooltip.style.visibility = 'hidden';
-      }, 1500);
-    }, { passive: true });
-  </script>
+  menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+
+  // ✅ Close mobile menu on scroll
+  window.addEventListener('scroll', () => {
+    if (!mobileMenu.classList.contains('hidden')) {
+      mobileMenu.classList.add('hidden');
+    }
+  });
+
+  // ✅ Close mobile menu when a link is clicked
+  document.querySelectorAll('#mobile-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+    });
+  });
+
+  // Back to Top visibility
+  const backToTop = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => {
+    backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
+  });
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // Tooltip auto-show on mobile (touch)
+  const waBtn = document.getElementById('whatsapp-btn');
+  const tooltip = waBtn.querySelector('.tooltip');
+  let tooltipTimer;
+  waBtn.addEventListener('touchstart', () => {
+    tooltip.style.visibility = 'visible';
+    tooltip.style.opacity = '1';
+    clearTimeout(tooltipTimer);
+    tooltipTimer = setTimeout(() => {
+      tooltip.style.opacity = '0';
+      tooltip.style.visibility = 'hidden';
+    }, 1500);
+  }, { passive: true });
+</script>
+
 </body>
 </html>
