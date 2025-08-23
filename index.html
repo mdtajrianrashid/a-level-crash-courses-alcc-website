@@ -623,18 +623,19 @@ strong, b {
   let expanded = false;
 
   toggleBtn.addEventListener("click", () => {
-    expanded = !expanded;
+  expanded = !expanded;
 
-    if (expanded) {
-      aboutContainer.style.maxHeight = "5000px"; // expand fully
-      fadeOverlay.style.display = "none"; // remove gradient overlay
-      toggleBtn.textContent = "Read Less ↑";
-    } else {
-      aboutContainer.style.maxHeight = "500px"; // collapse
-      fadeOverlay.style.display = "block"; // show gradient overlay
-      toggleBtn.textContent = "Read More →";
-    }
-  });
+  if (expanded) {
+    aboutContainer.style.maxHeight = "none"; // allow full height
+    fadeOverlay.style.display = "none"; // remove gradient overlay
+    toggleBtn.textContent = "Read Less ↑";
+  } else {
+    aboutContainer.style.maxHeight = "500px"; // collapse
+    fadeOverlay.style.display = "block"; // show gradient overlay
+    toggleBtn.textContent = "Read More →";
+  }
+});
+
 </script>
 
 
