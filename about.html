@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ALCC - A-Level Crash Courses</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script> 
+
+  <!-- Google Font: Inter, Merriweather -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+
+  <!-- Custom CSS -->
+   <style>
+    html { scroll-behavior: smooth; }
+
+    body {
+        font-family: 'Inter', sans-serif;
+        line-height: 1.7;        /* smooth reading */
+        letter-spacing: 0.3px;   /* formal touch */
+        font-weight: 400;        /* regular for body text */
+        color: #1a1a1a;          /* dark academic gray for text */
+}
+
+/* Section: Navbar Adjusting */
+section {
+  scroll-margin-top: 100px; /* adjust to match your navbar height */
+}
+
+h1{
+  font-family: 'Merriweather', serif;
+  color: white;
+}
+
+h2, h3, h4, h5, h6 {
+      font-family: 'Merriweather', serif;
+      letter-spacing: 0.5px;
+      line-height: 1.4;
+      font-weight: 700;
+      color: #0f2c59; /* deep academic blue */
+    }
+
+p {
+  font-weight: 400;        /* standard */
+}
+
+strong, b {
+  font-weight: 600;        /* semi-bold highlights */
+}
+
+/* Gentle one-time fade-in animation for About section */
+.fade-in-about {
+  opacity: 0;
+  transform: translateY(15px); /* slight slide from below */
+  animation: fadeSlideIn 3s ease-in-out forwards 0.5s;
+  /* ↑ duration = 3s | delay = 0.8s */
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+    /* Back to Top */
+    #back-to-top {
+      position: fixed; bottom: 90px; right: 20px;
+      background: #1e3a8a; color: white;
+      padding: 12px 16px; border-radius: 9999px;
+      font-size: 14px; font-weight: bold; cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      display: none; transition: all 0.3s ease; z-index: 50;
+    }
+
+    #back-to-top:hover { background: #facc15; color: #1e3a8a; transform: scale(1.1); }
+
+    /* Floating WhatsApp Button */
+    #whatsapp-btn {
+      position: fixed;
+      bottom: 20px; right: 20px;
+      background: #25D366; color: #fff;
+      padding: 14px 16px; border-radius: 9999px;
+      font-size: 16px; font-weight: 700;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      display: flex; align-items: center; gap: 8px;
+      z-index: 999; cursor: pointer;
+      transition: transform 0.3s ease, background 0.3s ease;
+      animation: pulse 1.8s infinite;
+      text-decoration: none;
+    }
+    #whatsapp-btn:hover { background: #1ebe5b; transform: scale(1.08); }
+
+    /* Tooltip */
+    #whatsapp-btn .tooltip {
+      position: absolute;
+      right: 110%;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #1e293b;
+      color: #fff;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 13px;
+      white-space: nowrap;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.25s ease-in-out;
+      pointer-events: none;
+    }
+    #whatsapp-btn .tooltip::after {
+      content: "";
+      position: absolute;
+      left: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      border-width: 6px;
+      border-style: solid;
+      border-color: transparent transparent transparent #1e293b;
+    }
+    #whatsapp-btn:hover .tooltip {
+      visibility: visible;
+      opacity: 1;
+    }
+
+/* Animate Gradient Slowly */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient-slow {
+  background-size: 300% 300%;
+  animation: gradientShift 15s ease infinite;
+}
+
+
+    /* Pulse Animation */
+    @keyframes pulse {
+      0%   { transform: scale(1);   box-shadow: 0 0 0 0 rgba(37,211,102,0.6); }
+      70%  { transform: scale(1.08); box-shadow: 0 0 0 15px rgba(37,211,102,0); }
+      100% { transform: scale(1);   box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="fixed w-full z-50 shadow-md overflow-hidden">
+  <div class="relative">
+    <!-- Gradient Background with Animation -->
+    <div class="absolute inset-0 bg-gradient-to-r from-[#0f1f3d] via-[#1e40af] to-[#facc15] animate-gradient-slow"></div>
+
+    <!-- Navbar Content -->
+    <div class="relative max-w-7xl mx-auto flex justify-between items-center p-4">
+      <!-- Logo Left -->
+      <div class="flex items-center space-x-2">
+        <img src="./images/White Background ALCC Logo.png" alt="ALCC Logo" class="h-10" />
+        <span class="font-bold text-xl text-white">ALCC</span>
+      </div>
+
+      <!-- Nav Right -->
+      <nav class="hidden md:flex space-x-6 font-medium text-white relative z-10">
+        <!--  Nav Links -->
+        <a href="./index.html" class="hover:text-yellow-300 transition">Home</a>
+        <a href="#subjects" class="hover:text-yellow-300 transition">Subjects</a>
+        <a href="#why" class="hover:text-yellow-300 transition">Why ALCC</a>
+        <a href="./our-team.html" class="hover:text-yellow-300 transition">Team</a>
+        <a href="#contact" class="hover:text-yellow-300 transition">Contact</a>
+      </nav>
+
+      <!-- Mobile Menu Button -->
+      <button id="menu-btn" class="md:hidden text-white focus:outline-none relative z-10" aria-label="Open menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none"
+             viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round"
+                stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu --> <!--  #subjects #team -->
+    <div id="mobile-menu" class="hidden md:hidden shadow-lg relative z-10">
+      <nav class="flex flex-col space-y-4 py-4 px-6 text-white font-medium">
+        <a href="./index.html" class="hover:text-yellow-300 transition">Home</a>
+        <a href="#subjects" class="hover:text-yellow-300 transition">Subjects</a>
+        <a href="#why" class="hover:text-yellow-300 transition">Why ALCC</a>
+        <a href="./our-team.html" class="hover:text-yellow-300 transition">Team</a>
+        <a href="#contact" class="hover:text-yellow-300 transition">Contact</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+  <!-- About -->
+  <section id="about" class="pt-32 pb-16 fade-in-about max-w-6xl mx-auto px-6">
+  <h1 class="text-4xl font-bold text-center text-blue-800">About<br>A-Level Crash Courses<br>(ALCC)</h1>
+
+  <div id="about-container" class="relative transition-all duration-700 ease-in-out">
+    <div id="about-text" class="text-lg text-gray-700 mt-6 space-y-4">
+      <!-- Paste your full About content here -->
+      🌟 A-Level Crash Courses (ALCC) is a pioneering global online learning platform dedicated to helping students excel in Mathematics, Physics, Further Mathematics, and Accounting across the Edexcel, Cambridge International (CAIE), and AQA A-Level examination boards. Founded with a clear mission to make world-class education accessible, flexible, and effective for students everywhere, ALCC has become a trusted name for learners seeking clarity, strategy, and confidence in their A-Level journey.
+      <br><br>
+      <h2 class="text-2xl">🚀 Our Mission & Vision:</h2>
+      <br>
+      At ALCC, we believe that every student deserves the opportunity to succeed — regardless of location, background, or circumstance. Our mission is simple yet powerful:
+      <br>
+      <ul class="list-disc list-outside ml-8">
+        <li>Simplify complexity: We break down difficult A-Level concepts into easy-to-understand explanations.</li>
+        <li>Maximize performance: We equip students with exam strategies, problem-solving skills, and subject mastery.</li>
+        <li>Build confidence: Beyond academic performance, we aim to strengthen student confidence, discipline, and independence.</li>
+        <li>Global accessibility: With online teaching methods, we bring quality A-Level education to students across the world.</li>
+      </ul>
+      <br>
+      Our vision is to create a future where any student, from anywhere, can achieve top grades in A-Level exams with the right support, guidance, and mentorship.
+      <br><br>
+      <h2 id="subjects" class="text-2xl">🎓 Subjects & Boards Covered:</h2>
+      <br>
+      <strong>We specialize in four major A-Level subjects:</strong>
+      <br>
+      <ul class="list-disc list-outside ml-8">
+        <li>Mathematics (Pure Mathematics, Statistics, Mechanics)</li>
+        <li>Physics (Core topics, Applied, Practical Skills)</li>
+        <li>Further Mathematics (Further Pure Mathematics, Further Mechanics, Further Statistics)</li>
+        <li>Accounting (Financial Accounting, Management Accounting, Analysis & Application)</li>
+      </ul>
+      <br>
+      <strong>Our teaching is fully aligned to the official syllabi of:</strong>
+      <br>
+      <ul class="list-disc list-outside ml-8">
+        <li>Edexcel (IAL) - International Advanced Levels</li>
+        <li>CAIE (Cambridge International AS & A Levels)</li>
+        <li>AQA A-Levels</li>
+      </ul>
+      <br>
+      This ensures that students are always preparing with syllabus-specific content that is directly relevant to their exams.
+      <br><br>
+      <h2 class="text-2xl">📚 What We Offer:</h2>
+      <br>
+      <strong>1. Crash Courses & Video Tutorials:</strong>
+      <br>
+      <ul class="list-disc list-outside ml-8">
+        <li>Concise, exam-focused crash course videos available on YouTube and private platforms.</li>
+        <li>Designed for quick revision, last-minute preparation, and resit support.</li>
+        <li>Covers past paper analysis, problem-solving techniques, and exam hacks.</li>
+      </ul>
+      <br>
+      <strong>2. Personalized Tutoring:</strong>
+      <br>
+      <ul class="list-disc list-outside ml-8">
+        <li>1-on-1 tutoring for deep focus and tailored learning.</li>
+        <li>Small group sessions for peer-learning, discussion, and affordability.</li>
+        <li>Conducted online via Zoom, Google Meet, or Discord.</li>
+      </ul>
+      <br>
+      <strong>3. Flexible Learning Approach</strong>
+      <br>
+      <ul class="list-disc list-outside ml-8">
+        <li>Students can choose between short crash courses or long-term mentorship.</li>
+        <li>Flexible scheduling across time zones to accommodate students worldwide.</li>
+        <li>Perfect for students balancing multiple commitments or those needing intensive exam prep.</li>
+      </ul>
+      <br>
+      <strong>4. Strategic Exam Preparation:</strong>
+      <br>
+      <ul class="list-disc list-outside ml-8">
+        <li>Solving past papers with examiner-style marking.</li>
+        <li>Training in time management, structured answering, and grade-boosting techniques.</li>
+        <li>Guidance on how to avoid common mistakes that cost marks.</li>
+      </ul>
+      <br>
+      <strong>5. Support Beyond Academics:</strong>
+      <br>
+      <ul class="list-disc list-outside ml-8">
+        <li>Motivational mentorship to help students stay disciplined and confident.</li>
+        <li>Advice on university applications, STEM pathways, accounting careers, and scholarships.</li>
+        <li>Culturally sensitive teaching for international learners.</li>
+      </ul>
+      <br>
+      <h2 id="why" class="text-2xl">💡 Why Choose ALCC?</h2>
+      <ul class="list-disc list-outside ml-8">
+        <li>Comprehensive Coverage: Edexcel, Cambridge, and AQA boards.</li>
+        <li>Crash Course Expertise: Exam-focused videos that simplify and sharpen.</li>
+        <li>Flexible Tutoring: 1-on-1 or group options, adaptable to student needs.</li>
+        <li>Global Accessibility: Learn from anywhere — UK, USA, Australia, Middle East, Asia, Africa.</li>
+        <li>Student-First Philosophy: We prioritize student progress, not financial gain.</li>
+        <li>Proven Results: Students achieving top grades, improved confidence, and university placements.</li>
+      </ul>
+      <br>
+      <h2 class="text-2xl">🌍 Our Global Reach:</h2>
+      <br>
+      ALCC has proudly mentored students across the UK, Sweden, USA, Australia, Greece, UAE, Singapore, Oman, Kenya, Malaysia, Pakistan, India, and beyond.
+      <br><br>
+      By leveraging online platforms and a highly adaptive teaching style, we have created an international classroom without borders. Students from vastly different cultures and academic systems find consistency, reliability, and trust in our teaching.
+      <br><br>
+      <h2 class="text-2xl">👥 The Experts Panel:</h2>
+      <br>
+      ALCC is guided by a strong team of advisors and educators and combining academic brilliance with professional experience:
+      <br><br>
+      🔹 <strong>Engr. Md. Hasanur Rashid - Honorary Advisor</strong>
+      <br>
+      <ul class="list-disc list-outside ml-8">
+        <li>Incorporated Engineer (UK), Associate Fellow of SERT (UK), Member of IEEIE (UK)</li>
+        <li>40+ years of leadership in energy, healthcare, education, and commerce.</li>
+        <li>Founder Director of AL-AMIN ASSOCIATES (PLC) LIMITED, Former Managing Director of Shahjahanullah Power Generation Co. Ltd., Founder of Presidency School & College (An English Medium Institute regulated by British Council.)</li>
+        <li>A distinguished legacy figure and Honorary Advisor, contributing strategic insight, visionary leadership, and institutional prestige to ALCC.</li>
+      </ul>
+      <br>
+      🔹 <strong>Tajrian Rashid - Co-Founder & CEO</strong>
+      <br>
+      <ul class="list-disc list-outside ml-8">
+        <li>BEng in Robotics, University of Plymouth, UK</li>
+        <li>Vice-Chancellor's International Excellence Scholar</li>
+        <li>Achieved A* in Mathematics, A in Physics, A in Further Mathematics in International Advanced Levels (IAL)</li>
+        <li>Leads ALCC with a passion for teaching, student mentorship, and educational innovation.</li>
+      </ul>
+      <br>
+      🔹<strong>Engr. Fahad Rashid (Consultant, CISI) - Founder</strong>
+      <br>
+      <ul class="list-disc list-outside ml-8">
+        <li>Professional training in Corporate Finance, Imperial College London Business School</li>
+        <li>MSc in Management Accounting & Strategy, University of Dundee, UK<br>BEng in Aeronautical & Mechanical Engineering, University of Wales, UK</li>
+        <li>Provides strategic direction and financial expertise for ALCC’s growth and global development</li>
+        <li>Actively involved in teaching and student mentorship, delivering lessons with passion and guiding learners toward academic and personal excellence.</li>
+      </ul>
+      <br>
+      🔹 <strong>Takian Rashid - Digital Coordinator & Web Developer</strong>
+      <ul class="list-disc list-outside ml-8">
+        <li>Oversees digital learning infrastructure, website, and student experience</li>
+        <li>Ensures smooth integration of technology with learning</li>
+        <li>Actively involved in teaching and student mentorship, supporting learners in understanding concepts and navigating digital learning tools</li>
+      </ul>
+      <br>
+      <h2 class="text-2xl">🏆 Our Impact:</h2>
+      <ul class="list-disc list-outside ml-8">
+        <li>Helped hundreds of students achieve top grades (A/A*) in competitive subjects.</li>
+        <li>Provided last-minute crash courses that turned struggling students into confident candidates.</li>
+        <li>Supported learners in university admissions worldwide, particularly in STEM and Accounting/Finance disciplines.</li>
+        <li>Created a community of learners connected across continents.</li>
+      </ul>
+      <br>
+      <h2 id="contact" class="text-2xl">📞 Contact ALCC:</h2>
+      <ul class="list-disc list-outside ml-8">
+        <li>📱 WhatsApp: <a href="https://wa.me/447517215312" target="_blank" class="text-blue-600 hover:underline">+44 7517 215312</a></li>
+        <li>📧 Email: <a href="mailto:alevelcrashcourses@gmail.com" class="text-blue-600 hover:underline">alevelcrashcourses@gmail.com</a></li>
+      </ul>
+      <br>
+      <h2 class="text-2xl">📢 Like, Follow & Subscribe Us On:</h2>
+      <ul class="list-disc list-outside ml-8">
+        <li>📺 YouTube: <a href="https://youtube.com/@alevelcrashcourses?si=NN6LD-ZMSfKUR5JW" target="_blank" class="text-blue-600 hover:underline">A-Level Crash Courses</a></li>
+        <li>🌍 Facebook: <a href="https://www.facebook.com/alevelcrashcourses" target="_blank" class="text-blue-600 hover:underline">A-Level Crash Courses</a></li>
+        <li>💼 LinkedIn: <a href="https://www.linkedin.com/company/a-level-crash-courses/" target="_blank" class="text-blue-600 hover:underline">A-Level Crash Courses</a></li>
+      </ul>
+      <br>
+      <h2 class="text-2xl">🌟 Closing Note:</h2>
+      <br>
+      ALCC is more than just an online tutoring service — it is a movement to empower A-Level students globally. By combining syllabus-aligned resources, strategic mentorship, and global accessibility, we ensure that no student feels alone in their academic journey.
+      <br>
+      Whether you are preparing for your first exam attempt, retaking for a higher grade, or revising under tight deadlines, ALCC provides the tools, guidance, and confidence to help you study smarter, grasp concepts faster, and achieve higher results.
+      <!-- continue with your full text... -->
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+  <!-- Footer -->
+  <footer class="bg-blue-900 text-white text-center py-8">
+  <div class="flex justify-center space-x-6 mb-4">
+    <a href="https://www.facebook.com/alevelcrashcourses" target="_blank" class="hover:text-yellow-400 transition" aria-label="Facebook">
+      <i data-lucide="facebook"></i>
+    </a>
+    <a href="https://youtube.com/@alevelcrashcourses?si=NN6LD-ZMSfKUR5JW" target="_blank" class="hover:text-yellow-400 transition" aria-label="YouTube">
+      <i data-lucide="youtube"></i>
+    </a>
+    <a href="https://wa.me/447517215312" target="_blank" class="hover:text-yellow-400 transition" aria-label="WhatsApp">
+      <i data-lucide="message-circle"></i>
+    </a>
+    <a href="mailto:alevelcrashcourses@gmail.com" class="hover:text-yellow-400 transition" aria-label="Email">
+      <i data-lucide="mail"></i>
+    </a>
+    <a href="https://www.linkedin.com/company/a-level-crash-courses/" target="_blank" class="hover:text-yellow-400 transition" aria-label="LinkedIn">
+      <i data-lucide="linkedin"></i>
+    </a>
+  </div>
+  <p>&copy; 2025 ALCC - A-Level Crash Courses. All rights reserved.</p>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Back to Top -->
+    <button id="back-to-top" aria-label="Back to top">↑ Top</button>
+
+  <!-- Floating WhatsApp Button (with tooltip) -->
+  <a id="whatsapp-btn" href="https://wa.me/447517215312" target="_blank" aria-label="Chat with us on WhatsApp" rel="noopener">
+    <i data-lucide="message-circle"></i>
+    Chat
+    <span class="tooltip">Chat with us on WhatsApp</span>
+  </a>
+
+  <!-- JS -->
+  <script>
+  // Activate Lucide icons
+  lucide.createIcons();
+
+  // Mobile menu
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+
+  // ✅ Close mobile menu on scroll
+  window.addEventListener('scroll', () => {
+    if (!mobileMenu.classList.contains('hidden')) {
+      mobileMenu.classList.add('hidden');
+    }
+  });
+
+  // ✅ Close mobile menu when a link is clicked
+  document.querySelectorAll('#mobile-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+    });
+  });
+
+  // Back to Top visibility
+  const backToTop = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => {
+    backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
+  });
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // Tooltip auto-show on mobile (touch)
+  const waBtn = document.getElementById('whatsapp-btn');
+  const tooltip = waBtn.querySelector('.tooltip');
+  let tooltipTimer;
+  waBtn.addEventListener('touchstart', () => {
+    tooltip.style.visibility = 'visible';
+    tooltip.style.opacity = '1';
+    clearTimeout(tooltipTimer);
+    tooltipTimer = setTimeout(() => {
+      tooltip.style.opacity = '0';
+      tooltip.style.visibility = 'hidden';
+    }, 1500);
+  }, { passive: true });
+</script>
+</body>
+</html>

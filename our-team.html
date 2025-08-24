@@ -5,12 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ALCC - A-Level Crash Courses</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/lucide@latest"></script> <!-- Lucide Icons -->
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script> 
 
-  <!-- Google Font: Inter -->
+  <!-- Google Font: Inter, Merriweather -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@700&display=swap" rel="stylesheet">
 
-  <style>
+  <!-- Custom CSS -->
+   <style>
     html { scroll-behavior: smooth; }
 
     body {
@@ -21,60 +23,9 @@
   color: #1a1a1a;          /* dark academic gray for text */
 }
 
-.hero-bg {
-    position: relative; /* needed for overlay positioning */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 100vh;
-    animation: slideBackground 25s infinite;
-    overflow: hidden; /* optional, ensures overlay doesn't spill */
-}
-
-/* Shadow Overlay */
-.hero-bg::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6); /* semi-transparent black shadow */
-    z-index: 1; /* below content */
-}
-
-/* Keep content above overlay */
-.hero-bg > .max-w-4xl {
-    position: relative;
-    z-index: 2;
-}
-
 /* Section: Navbar Adjusting */
 section {
   scroll-margin-top: 100px; /* adjust to match your navbar height */
-}
-
-
-/* Keyframes for animated background */
-@keyframes slideBackground {
-    0% {
-        background-image: url('./images/hero-bg-1.png');
-    }
-    20% {
-        background-image: url('./images/hero-bg-2.png');
-    }
-    40% {
-        background-image: url('./images/hero-bg-3.png');
-    }
-    60% {
-        background-image: url('./images/hero-bg-4.png'); /* add your 4th image */
-    }
-    80% {
-        background-image: url('./images/hero-bg-5.png'); /* add your 5th image */
-    }
-    100% {
-        background-image: url('./images/hero-bg-1.png'); /* loops back */
-    }
 }
 
 h1{
@@ -115,6 +66,7 @@ strong, b {
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       display: none; transition: all 0.3s ease; z-index: 50;
     }
+
     #back-to-top:hover { background: #facc15; color: #1e3a8a; transform: scale(1.1); }
 
     /* Floating WhatsApp Button */
@@ -187,8 +139,7 @@ strong, b {
     }
   </style>
 </head>
-<body class="bg-white text-gray-800">
-
+<body>
   <!-- Navbar -->
   <header class="fixed w-full z-50 shadow-md overflow-hidden">
   <div class="relative">
@@ -205,11 +156,10 @@ strong, b {
 
       <!-- Nav Right -->
       <nav class="hidden md:flex space-x-6 font-medium text-white relative z-10">
-        <!--   Nav links -->
-        <a href="./about.html" class="hover:text-yellow-300 transition">About</a>
+        <a href="#about" class="hover:text-yellow-300 transition">About</a>
         <a href="#subjects" class="hover:text-yellow-300 transition">Subjects</a>
         <a href="#why" class="hover:text-yellow-300 transition">Why ALCC</a>
-        <a href="./our-team.html" class="hover:text-yellow-300 transition">Team</a>
+        <a href="#team" class="hover:text-yellow-300 transition">Team</a>
         <a href="#contact" class="hover:text-yellow-300 transition">Contact</a>
       </nav>
 
@@ -223,142 +173,19 @@ strong, b {
       </button>
     </div>
 
-    <!-- Mobile Menu --> <!--  #subjects #team -->
+    <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden md:hidden shadow-lg relative z-10">
       <nav class="flex flex-col space-y-4 py-4 px-6 text-white font-medium">
-        <a href="./about.html" class="hover:text-yellow-300 transition">About</a>
+        <a href="#about" class="hover:text-yellow-300 transition">About</a>
         <a href="#subjects" class="hover:text-yellow-300 transition">Subjects</a>
         <a href="#why" class="hover:text-yellow-300 transition">Why ALCC</a>
-        <a href="./our-team.html" class="hover:text-yellow-300 transition">Team</a>
+        <a href="#team" class="hover:text-yellow-300 transition">Team</a>
         <a href="#contact" class="hover:text-yellow-300 transition">Contact</a>
       </nav>
     </div>
   </div>
 </header>
 
-  <!-- Hero -->
-  <section class="pt-6 md:pt-24 hero-bg text-white text-center flex items-center justify-center min-h-screen">
-  <div class="max-w-4xl mx-auto py-20 px-4 fade-in">
-    <h1 class="text-4xl md:text-6xl font-black">
-      A-Level Crash Courses <br class="md:hidden">(ALCC)
-    </h1>
-    <p class="mt-6 text-lg md:text-xl">
-      Empowering Students Worldwide to Excel in
-      <span class="font-semibold">Mathematics, Physics & Further Mathematics</span>
-    </p>
-
-    <!-- CTA Buttons -->
-    <div class="mt-8 flex flex-wrap justify-center gap-4">
-      <a href="https://www.facebook.com/alevelcrashcourses" target="_blank"
-         class="bg-yellow-400 text-blue-900 font-bold px-6 py-3 rounded-lg hover:bg-yellow-500 transform hover:scale-105 transition">
-        Join Us on Facebook
-      </a>
-      <a href="https://youtube.com/@alevelcrashcourses?si=NN6LD-ZMSfKUR5JW" target="_blank"
-         class="bg-white text-blue-900 font-bold px-6 py-3 rounded-lg hover:bg-gray-200 transform hover:scale-105 transition">
-        Watch on YouTube
-      </a>
-    </div>
-  </div>
-</section>
-
-  <!-- About -->
-  <section id="about" class="py-16 max-w-6xl mx-auto px-6 fade-in">
-  <h1 class="text-3xl font-bold text-center text-blue-800">About<br>A-Level Crash Courses<br>(ALCC)</h1>
-
-  <div id="about-container" class="relative">
-    <div id="about-text" class="text-center text-lg text-gray-700 mt-6 space-y-4">
-      <!-- Paste your full About content here -->
-      🌟 A-Level Crash Courses (ALCC) is a pioneering global online learning platform dedicated to helping students excel in Mathematics, Physics, Further Mathematics, and Accounting across the Edexcel, Cambridge International (CAIE), and AQA A-Level examination boards. Founded with a clear mission to make world-class education accessible, flexible, and effective for students everywhere, ALCC has become a trusted name for learners seeking clarity, strategy, and confidence in their A-Level journey.
-    </div>
-  </div>
-
-  <!-- ✅ Read more Button -->
-  <div class="mt-6 text-center">
-  <a href="about.html"
-     class="bg-blue-900 text-white font-semibold px-6 py-3 rounded-lg hover:bg-yellow-400 hover:text-blue-900 transition">
-    Read More →
-  </a>
-</div>
-</section>
-
-
-  <!-- Subjects -->
-  <section id="subjects" class="bg-gray-100 py-16 fade-in">
-    <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-3xl font-bold text-center text-blue-800">Subjects We Cover</h2>
-      <div class="grid md:grid-cols-3 gap-8 mt-10">
-        <div class="bg-white p-6 rounded-xl shadow hover:shadow-xl transform hover:-translate-y-2 transition">
-          <h3 class="text-xl font-semibold text-yellow-500">Mathematics</h3>
-          <p class="mt-3">Pure, Mechanics, Statistics, and Decision Mathematics tailored to exam success.</p>
-        </div>
-        <div class="bg-white p-6 rounded-xl shadow hover:shadow-xl transform hover:-translate-y-2 transition">
-          <h3 class="text-xl font-semibold text-yellow-500">Physics</h3>
-          <p class="mt-3">Core topics, applied concepts, and practical exam preparation.</p>
-        </div>
-        <div class="bg-white p-6 rounded-xl shadow hover:shadow-xl transform hover:-translate-y-2 transition">
-          <h3 class="text-xl font-semibold text-yellow-500">Further Mathematics</h3>
-          <p class="mt-3">Advanced Pure, Statistics, and Mechanics for ambitious learners.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Why Choose Us -->
-  <section id="why" class="py-16 max-w-6xl mx-auto px-6 text-center fade-in">
-    <h2 class="text-3xl font-bold text-blue-800">Why Choose ALCC?</h2>
-    <div class="grid md:grid-cols-3 gap-8 mt-10">
-      <div class="p-6 bg-white shadow rounded-xl hover:shadow-xl transform hover:scale-105 transition">
-        <h3 class="text-xl font-semibold text-yellow-500">Expert Tutors</h3>
-        <p>Guided by highly qualified educators with proven results.</p>
-      </div>
-      <div class="p-6 bg-white shadow rounded-xl hover:shadow-xl transform hover:scale-105 transition">
-        <h3 class="text-xl font-semibold text-yellow-500">Global Access</h3>
-        <p>Students from 15+ countries learning together online.</p>
-      </div>
-      <div class="p-6 bg-white shadow rounded-xl hover:shadow-xl transform hover:scale-105 transition">
-        <h3 class="text-xl font-semibold text-yellow-500">Crash Course Focus</h3>
-        <p>Exam-focused teaching to maximize your grade boost.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Team -->
-  <section id="team" class="bg-gray-100 py-16 fade-in">
-    <div class="max-w-6xl mx-auto px-6 text-center">
-      <h2 class="text-3xl font-bold text-blue-800">Meet Our Team</h2>
-      <div class="grid md:grid-cols-4 gap-8 mt-10">
-        <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transform hover:-translate-y-2 transition">
-          <h3 class="font-semibold text-lg">Tajrian Rashid</h3>
-          <p class="text-sm text-gray-600">Co-Founder & CEO</p>
-        </div>
-        <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transform hover:-translate-y-2 transition">
-          <h3 class="font-semibold text-lg">Engr. Fahad Rashid</h3>
-          <p class="text-sm text-gray-600">Founder & Consultant</p>
-        </div>
-        <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transform hover:-translate-y-2 transition">
-          <h3 class="font-semibold text-lg">Takian Rashid</h3>
-          <p class="text-sm text-gray-600">Digital Coordinator</p>
-        </div>
-        <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transform hover:-translate-y-2 transition">
-          <h3 class="font-semibold text-lg">Engr. Md. Hasanur Rashid</h3>
-          <p class="text-sm text-gray-600">Honorary Advisor</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact -->
-<section id="contact" class="py-16 max-w-6xl mx-auto px-6 text-center fade-in">
-  <h2 class="text-3xl font-bold text-blue-800">Contact Us</h2>
-  <p class="mt-4">Reach us anytime for enrollment & inquiries.</p>
-  <div class="mt-6 space-y-3">
-    <p>📧 Email: <a href="mailto:alevelcrashcourses@gmail.com" class="text-blue-600 hover:underline">alevelcrashcourses@gmail.com</a></p>
-    <p>📱 WhatsApp: <a href="https://wa.me/447517215312" target="_blank" class="text-blue-600 hover:underline">+44 7517 215312</a></p>
-    <p>📺 YouTube: <a href="https://youtube.com/@alevelcrashcourses?si=NN6LD-ZMSfKUR5JW" target="_blank" class="text-blue-600 hover:underline">A-Level Crash Courses</a></p>
-    <p>🌍 Facebook: <a href="https://www.facebook.com/alevelcrashcourses" target="_blank" class="text-blue-600 hover:underline">A-Level Crash Courses</a></p>
-    <p>💼 LinkedIn: <a href="https://www.linkedin.com/company/a-level-crash-courses/" target="_blank" class="text-blue-600 hover:underline">A-Level Crash Courses</a></p>
-  </div>
-</section>
 
   <!-- Footer -->
   <footer class="bg-blue-900 text-white text-center py-8">
@@ -382,8 +209,64 @@ strong, b {
   <p>&copy; 2025 ALCC - A-Level Crash Courses. All rights reserved.</p>
 </footer>
 
-  <!-- Back to Top -->
-  <button id="back-to-top" aria-label="Back to top">↑ Top</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Back to Top -->
+    <button id="back-to-top" aria-label="Back to top">↑ Top</button>
 
   <!-- Floating WhatsApp Button (with tooltip) -->
   <a id="whatsapp-btn" href="https://wa.me/447517215312" target="_blank" aria-label="Chat with us on WhatsApp" rel="noopener">
@@ -454,6 +337,5 @@ strong, b {
     }, 1500);
   }, { passive: true });
 </script>
-
 </body>
 </html>
