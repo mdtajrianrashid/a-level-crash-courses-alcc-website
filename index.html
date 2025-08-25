@@ -51,6 +51,22 @@ section {
   scroll-margin-top: 90px; /* adjust to match your navbar height */
 }
 
+/* Animate Gradient Slowly for Navbar */
+
+.animate-gradient-slow {
+  background-size: 400% 400%;
+  animation: gradientShift 18s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  15%  { background-position: 50% 0%; }
+  35%  { background-position: 100% 50%; }
+  60%  { background-position: 50% 100%; }
+  85%  { background-position: 0% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 .hero-bg {
     position: relative; /* needed for overlay positioning */
     background-size: cover;
@@ -134,6 +150,14 @@ section {
       animation: pulse 1.8s infinite;
       text-decoration: none;
     }
+
+    /* Floating Whatsapp Button Pulse Animation */
+    @keyframes pulse {
+      0%   { transform: scale(1);   box-shadow: 0 0 0 0 rgba(37,211,102,0.6); }
+      70%  { transform: scale(1.08); box-shadow: 0 0 0 15px rgba(37,211,102,0); }
+      100% { transform: scale(1);   box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+    }
+
     #whatsapp-btn:hover { background: #1ebe5b; transform: scale(1.08); }
 
     /* Tooltip */
@@ -168,26 +192,6 @@ section {
       visibility: visible;
       opacity: 1;
     }
-
-        /* Floating Whatsapp Button Pulse Animation */
-    @keyframes pulse {
-      0%   { transform: scale(1);   box-shadow: 0 0 0 0 rgba(37,211,102,0.6); }
-      70%  { transform: scale(1.08); box-shadow: 0 0 0 15px rgba(37,211,102,0); }
-      100% { transform: scale(1);   box-shadow: 0 0 0 0 rgba(37,211,102,0); }
-    }
-
-/* Animate Gradient Slowly */
-
-.animate-gradient-slow {
-  background-size: 300% 300%;
-  animation: gradientShift 15s ease infinite;
-}
-
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
 
   </style>
 </head>

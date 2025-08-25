@@ -4,15 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ALCC - A-Level Crash Courses</title>
+
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
+
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script> 
 
-  <!-- Google Font: Inter, Merriweather -->
+  <!-- Google Font: Inter -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@700&display=swap" rel="stylesheet">
 
-  <!-- Custom CSS -->
-   <style>
+  <style>
     html { scroll-behavior: smooth; }
 
     body {
@@ -23,14 +25,12 @@
   color: #1a1a1a;          /* dark academic gray for text */
 }
 
-/* Section: Navbar Adjusting */
-section {
-  scroll-margin-top: 100px; /* adjust to match your navbar height */
+.merriweather{
+  font-family: 'Merriweather', serif;
 }
 
-h1{
-  font-family: 'Merriweather', serif;
-  color: white;
+.inter{
+  font-family: 'Inter', sans-serif;
 }
 
 h2, h3, h4, h5, h6 {
@@ -47,6 +47,27 @@ p {
 
 strong, b {
   font-weight: 600;        /* semi-bold highlights */
+}
+
+/* Section: Navbar Adjusting */
+section {
+  scroll-margin-top: 90px; /* adjust to match your navbar height */
+}
+
+/* Animate Gradient Slowly for Navbar */
+
+.animate-gradient-slow {
+  background-size: 400% 400%;
+  animation: gradientShift 18s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  15%  { background-position: 50% 0%; }
+  35%  { background-position: 100% 50%; }
+  60%  { background-position: 50% 100%; }
+  85%  { background-position: 0% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
     /* Fade-in on scroll */
@@ -66,7 +87,6 @@ strong, b {
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       display: none; transition: all 0.3s ease; z-index: 50;
     }
-
     #back-to-top:hover { background: #facc15; color: #1e3a8a; transform: scale(1.1); }
 
     /* Floating WhatsApp Button */
@@ -83,6 +103,14 @@ strong, b {
       animation: pulse 1.8s infinite;
       text-decoration: none;
     }
+
+    /* Floating Whatsapp Button Pulse Animation */
+    @keyframes pulse {
+      0%   { transform: scale(1);   box-shadow: 0 0 0 0 rgba(37,211,102,0.6); }
+      70%  { transform: scale(1.08); box-shadow: 0 0 0 15px rgba(37,211,102,0); }
+      100% { transform: scale(1);   box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+    }
+
     #whatsapp-btn:hover { background: #1ebe5b; transform: scale(1.08); }
 
     /* Tooltip */
@@ -118,28 +146,10 @@ strong, b {
       opacity: 1;
     }
 
-/* Animate Gradient Slowly */
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-.animate-gradient-slow {
-  background-size: 300% 300%;
-  animation: gradientShift 15s ease infinite;
-}
-
-
-    /* Pulse Animation */
-    @keyframes pulse {
-      0%   { transform: scale(1);   box-shadow: 0 0 0 0 rgba(37,211,102,0.6); }
-      70%  { transform: scale(1.08); box-shadow: 0 0 0 15px rgba(37,211,102,0); }
-      100% { transform: scale(1);   box-shadow: 0 0 0 0 rgba(37,211,102,0); }
-    }
   </style>
 </head>
-<body>
+<body class="bg-white text-gray-800">
+
   <!-- Navbar -->
   <header class="fixed w-full z-50 shadow-md overflow-hidden">
   <div class="relative">
@@ -156,10 +166,11 @@ strong, b {
 
       <!-- Nav Right -->
       <nav class="hidden md:flex space-x-6 font-medium text-white relative z-10">
-        <a href="#about" class="hover:text-yellow-300 transition">About</a>
+        <!--   Nav links -->
+        <a href="./about.html" class="hover:text-yellow-300 transition">About</a>
         <a href="#subjects" class="hover:text-yellow-300 transition">Subjects</a>
         <a href="#why" class="hover:text-yellow-300 transition">Why ALCC</a>
-        <a href="#team" class="hover:text-yellow-300 transition">Team</a>
+        <a href="./our-team.html" class="hover:text-yellow-300 transition">Team</a>
         <a href="#contact" class="hover:text-yellow-300 transition">Contact</a>
       </nav>
 
@@ -173,18 +184,193 @@ strong, b {
       </button>
     </div>
 
-    <!-- Mobile Menu -->
+    <!-- Mobile Menu --> <!--  #subjects #team -->
     <div id="mobile-menu" class="hidden md:hidden shadow-lg relative z-10">
       <nav class="flex flex-col space-y-4 py-4 px-6 text-white font-medium">
-        <a href="#about" class="hover:text-yellow-300 transition">About</a>
+        <a href="./about.html" class="hover:text-yellow-300 transition">About</a>
         <a href="#subjects" class="hover:text-yellow-300 transition">Subjects</a>
         <a href="#why" class="hover:text-yellow-300 transition">Why ALCC</a>
-        <a href="#team" class="hover:text-yellow-300 transition">Team</a>
+        <a href="./our-team.html" class="hover:text-yellow-300 transition">Team</a>
         <a href="#contact" class="hover:text-yellow-300 transition">Contact</a>
       </nav>
     </div>
   </div>
 </header>
+
+<!-- Meet Our Team Section -->
+<section id="team" class="py-16 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-6">
+    <h1 class="text-4xl md:text-5xl font-bold text-center text-blue-900 mb-12 merriweather">Meet Our Team</h1>
+
+    <!-- Member 1 -->
+    <div class="flex flex-col md:flex-row items-center gap-8 mb-12 fade-in">
+      <!-- Poster -->
+      <div class="flex-1">
+        <img src="./Poster/Honorary Advisor Team Website Photo.png" alt="Engr. Md. Hasanur Rashid" class="rounded-xl w-full object-cover shadow-lg">
+      </div>
+      <!-- Short Bio -->
+      <div class="flex-1">
+        <h2 class="text-2xl md:text-3xl font-bold mb-2">Engr. Md. Hasanur Rashid</h2>
+        <h2 class="inter mb-2 text-base md:text-lg font-semibold">(Incorporated Engineer, The Engineering Council, UK.)
+        </h2>
+        <h2 class="inter mb-2 text-base md:text-lg font-semibold">
+          (Associate Fellow, SERT, UK.)
+        </h2>
+        <h2 class="inter mb-6 text-base md:text-lg font-semibold">            
+          (Member, IEEIE, UK.)
+        </h2>
+        <ul class="list-disc list-outside pl-6 space-y-2 mb-6">
+          <li class="inter text-base font-medium">
+            <strong>HND in Electrical and Electronic Engineering (EEE) – Colchester Institute, UK</strong>
+          </li>
+          <li class="inter text-base font-medium">
+            <strong>BSc in Science (Physics, Chemistry, Mathematics) - Govt. Brajalal College (B. L. College, Khulna)</strong>
+          </li>
+        </ul>
+
+        <ul class="list-disc list-outside pl-6 space-y-2">
+          <li class="inter text-base font-medium">
+            Founder Director of <strong>AL-AMIN ASSOCIATES (PLC) LIMITED</strong>
+
+            <br>
+
+            <span class="italic text-gray-600 block">(Sister concerns: <strong>Sylhet Central Dental College , Al-Amin Nursing College</strong> and <strong>Al-Amin General Hospital)</strong></span>
+          </li>
+          <li class="inter text-base font-medium">
+            Partner at  <strong>M/S. RAHIM & RAHIM Filling Station</strong>
+
+            <br>
+
+            <span class="italic text-gray-600 block">(Established 1966, Authorized Dealer of <strong>Jamuna Oil Company Ltd.)</strong></span>
+          </li>
+          <li class="inter text-base font-medium">
+            Founder and Former Director & Rector of <strong>Presidency School & College</strong>
+
+            <br>
+
+            <span class="italic text-gray-600 block"><strong>(An English Medium Institute regulated by British Council)</strong></span>
+          </li>
+          <li class="inter text-base font-medium">
+            Former Managing Director of <strong>Shahjahanullah Power Generation Co. Ltd.</strong>
+
+            <br>
+
+            <span class="italic text-gray-600 block">(Presently operating as <strong>United Energy Ltd.)</strong></span>
+          </li>
+        </ul>
+  
+      </div>
+    </div>
+    <!-- Long Description -->
+    <div class="w-full mb-12 bg-white rounded-xl p-6 shadow-inner text-gray-700 text-justify fade-in">
+      <p>
+        I am an engineer, educationist, and business leader with over four decades of experience across energy, healthcare, education, and commerce. Recognized as an <strong>Incorporated Engineer (Engineering Council, UK), Associate Fellow of SERT (UK)</strong>, and <strong>Member of the Institution of Electronics & Electrical Incorporated Engineers (UK)</strong>, I have dedicated my career to building institutions, advancing industry standards, and mentoring the next generation.
+        <br><br>
+        Currently, I serve as <strong>Honorary Advisor</strong> to <strong>A-Level Crash Courses (ALCC)</strong>, an international platform supporting students in A-Level Mathematics, Physics, and Further Mathematics. In this honorary role, I provide strategic guidance, educational insight, and mentorship to the leadership team, helping strengthen the institution’s global reach.
+        <br><br>
+        I am also <strong>Founder Director</strong> of <strong>AL-AMIN ASSOCIATES (PLC) LIMITED</strong>, one of <strong>Sylhet’s leading ventures in healthcare and education</strong>. Under my leadership, the group established <strong>Sylhet Central Dental College, Al-Amin Nursing College</strong>, and <strong>Al-Amin General Hospital</strong>, which continue to uphold excellence in academic training, patient care, and community service.
+        <br><br>
+        Earlier, I served as <strong>Managing Director of Shahjahanullah Power Generation Co. Ltd. (later acquired by United Group and now United Energy Ltd.)</strong>, where I oversaw the development of a 24 MW Independent Power Plant and built international collaborations to strengthen Bangladesh’s energy sector. I have also contributed as a <strong>Partner of M/S Rahim & Rahim</strong>, one of Sylhet’s oldest petroleum distributors, and as <strong>Proprietor of Rasheed Electronics, once Sylhet’s hub for technology and innovation</strong>.
+        <br><br>
+        <strong>In education, I made a lasting contribution as Founder & Rector of Presidency School & College, a pioneering institution delivering the British curriculum from playgroup to A-Level. My leadership emphasized discipline, innovation and global exposure, leaving a legacy of academic excellence and community trust.</strong>
+        <br><br>
+        I hold a <strong>Higher National Diploma in Electrical & Electronic Engineering from Colchester Institute, UK</strong> and a <strong>B.Sc. in Science (Physics, Chemistry, Mathematics)</strong>. Although I am currently unwell and physically unable to move, I continue to manage my businesses and advisory responsibilities remotely. Despite health challenges, I remain committed to offering strategic direction, mentoring young leaders, and contributing to education, healthcare and community development.
+        <br><br>
+        My journey has always been guided by integrity, vision and service. I take pride in building institutions that create lasting impact and in continuing to serve society, even from a distance.
+      </p>
+    </div>
+    
+    <!-- Member 2 -->
+    <div class="flex flex-col md:flex-row items-center gap-8 mb-12 fade-in">
+      <div class="flex-1 md:order-2">
+        <img src="./Poster/Co - Founder & CEO Team Website Photo.png" alt="Tajrian Rashid" class="rounded-xl w-full object-cover shadow-lg">
+      </div>
+      <div class="flex-1 md:order-1">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4">Tajrian Rashid</h2>
+        <p class="text-gray-700 mb-4">
+          Co-Founder & CEO. Oversees curriculum, mentorship, and global student success.
+        </p>
+      </div>
+    </div>
+    <div class="w-full mb-12 bg-white rounded-xl p-6 shadow-inner text-gray-700 text-justify fade-in">
+      <p>
+        Full description goes here. Add your 2600 characters for Tajrian. Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+      </p>
+    </div>
+
+    <!-- Member 3 -->
+    <div class="flex flex-col md:flex-row items-center gap-8 mb-12 fade-in">
+      <div class="flex-1">
+        <img src="./Poster/Founder Team Website Photo.png" alt="Engr. Fahad Rashid" class="rounded-xl w-full object-cover shadow-lg">
+      </div>
+      <div class="flex-1">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4">Engr. Fahad Rashid</h2>
+        <p class="text-gray-700 mb-4">
+          Founder of ALCC. Strategy and digital learning expert.
+        </p>
+      </div>
+    </div>
+    <div class="w-full mb-12 bg-white rounded-xl p-6 shadow-inner text-gray-700 text-justify fade-in">
+      <p>
+        Full description goes here for Engr. Fahad Rashid. Lorem ipsum dolor sit amet...
+      </p>
+    </div>
+
+    <!-- Member 4 -->
+<div class="flex flex-col md:flex-row items-center gap-8 mb-12 fade-in">
+  <div class="flex-1 md:order-2">
+    <img src="./Poster/Digital Coordinator & Web Developer Team Website Photo.png" alt="Takian Rashid" class="rounded-xl w-full object-cover shadow-lg">
+  </div>
+  <div class="flex-1 md:order-1">
+    <h2 class="text-2xl md:text-3xl font-bold mb-4">Takian Rashid</h2>
+    <p class="text-gray-700 mb-4">
+      Digital Coordinator & Web Developer. Ensures smooth online learning experience.
+    </p>
+  </div>
+</div>
+<div class="w-full mb-12 bg-white rounded-xl p-6 shadow-inner text-gray-700 text-justify fade-in">
+  <p>
+    Full description goes here for Takian Rashid. Lorem ipsum dolor sit amet...
+  </p>
+</div>
+
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   <!-- Footer -->
@@ -209,64 +395,8 @@ strong, b {
   <p>&copy; 2025 ALCC - A-Level Crash Courses. All rights reserved.</p>
 </footer>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- Back to Top -->
-    <button id="back-to-top" aria-label="Back to top">↑ Top</button>
+  <!-- Back to Top -->
+  <button id="back-to-top" aria-label="Back to top">↑ Top</button>
 
   <!-- Floating WhatsApp Button (with tooltip) -->
   <a id="whatsapp-btn" href="https://wa.me/447517215312" target="_blank" aria-label="Chat with us on WhatsApp" rel="noopener">
@@ -336,6 +466,8 @@ strong, b {
       tooltip.style.visibility = 'hidden';
     }, 1500);
   }, { passive: true });
+
 </script>
+
 </body>
 </html>
